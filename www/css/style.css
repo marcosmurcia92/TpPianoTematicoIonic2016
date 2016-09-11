@@ -24,6 +24,16 @@
   float:left;
 }
 
+button > img {
+    position:absolute;
+    top:50%;
+    max-height:90%;
+    max-width: 90%;
+    display:block;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+}
+
 .push_button{
 	position: relative;
 	width:80%;

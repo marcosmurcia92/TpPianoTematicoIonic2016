@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
-    $scope.modal.hide();
+    //$scope.modal.hide();
   };
 
   // Open the login modal
@@ -55,6 +55,17 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('SearchCtrl', function($scope, $stateParams,$ionicSideMenuDelegate) {
-  $ionicSideMenuDelegate.canDragContent(false)
+.controller('PianoCtrl', function($scope, $stateParams,$cordovaVibration,$cordovaMedia,$cordovaDevice,$ionicSideMenuDelegate) {
+  $ionicSideMenuDelegate.canDragContent(false);
+
+
+  $scope.TocarPiano=function(carpeta,sonido){
+    var src = "";
+      $cordovaVibration.vibrate(500);
+      src = "/android_asset/www/mp3/"+carpeta+"/"+sonido+".mp3";
+      var media = $cordovaMedia.newMedia(src);
+      media.setVolume(1);
+      media.play();
+      console.log(sonido);
+  };
 });
