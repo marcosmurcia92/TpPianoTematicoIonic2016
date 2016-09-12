@@ -32,6 +32,16 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
+  .state('app.autor', {
+    url: '/autor',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/autor.html',
+        controller: 'AutorCtrl'
+      }
+    }
+  })
+
   .state('app.animales', {
     url: '/animales',
     views: {

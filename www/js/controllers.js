@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal,$ionicPlatform, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -14,14 +14,16 @@ angular.module('starter.controllers', [])
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
+    scope: $scope,
+    backdropClickToClose: false
   }).then(function(modal) {
     $scope.modal = modal;
+    $scope.login();
   });
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
-    //$scope.modal.hide();
+    $scope.modal.hide();
   };
 
   // Open the login modal
@@ -37,22 +39,12 @@ angular.module('starter.controllers', [])
     // code if using a login system
     $timeout(function() {
       $scope.closeLogin();
-    }, 1000);
+    }, 500);
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+.controller('AutorCtrl', function($scope, $stateParams) {
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
 .controller('PianoCtrl', function($scope, $stateParams,$cordovaVibration,$cordovaMedia,$cordovaDevice,$ionicSideMenuDelegate) {
@@ -60,12 +52,12 @@ angular.module('starter.controllers', [])
 
 
   $scope.TocarPiano=function(carpeta,sonido){
+      console.log("/android_asset/www/mp3/"+carpeta+"/"+sonido+".mp3");
     var src = "";
       $cordovaVibration.vibrate(500);
       src = "/android_asset/www/mp3/"+carpeta+"/"+sonido+".mp3";
       var media = $cordovaMedia.newMedia(src);
       media.setVolume(1);
       media.play();
-      console.log(sonido);
   };
 });
