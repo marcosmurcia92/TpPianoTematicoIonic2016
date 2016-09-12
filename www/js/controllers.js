@@ -59,5 +59,9 @@ angular.module('starter.controllers', [])
       var media = $cordovaMedia.newMedia(src);
       media.setVolume(1);
       media.play();
+
+      $timeout(function(){
+        media.release();
+      },1000);
   };
 });

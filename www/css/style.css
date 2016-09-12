@@ -48,9 +48,9 @@ button > img {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
-    -moz-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
-    box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+    -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1);
+    -moz-box-shadow: 0px 9px 0px rgba(219,31,5,1);
+    box-shadow: 0px 9px 0px rgba(219,31,5,1);
     margin: 20px auto;
   text-align: center;
   
@@ -62,9 +62,9 @@ button > img {
 }
 
 .push_button_animal.activated{
-    -webkit-box-shadow: 0px 1px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
-    -moz-box-shadow: 0px 1px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
-    box-shadow: 0px 1px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    -webkit-box-shadow: 0px 1px 0px rgba(219,31,5,1);
+    -moz-box-shadow: 0px 1px 0px rgba(219,31,5,1);
+    box-shadow: 0px 1px 0px rgba(219,31,5,1);
     position: relative;
     top: 8px;
 }
@@ -83,9 +83,9 @@ button > img {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow: 0px 9px 0px rgba(0, 77, 128,1), 0px 9px 25px rgba(0,0,0,.7);
-    -moz-box-shadow: 0px 9px 0px rgba(0, 77, 128,1), 0px 9px 25px rgba(0,0,0,.7);
-    box-shadow: 0px 9px 0px rgba(0, 77, 128,1), 0px 9px 25px rgba(0,0,0,.7);
+    -webkit-box-shadow: 0px 9px 0px rgba(0, 77, 128,1);
+    -moz-box-shadow: 0px 9px 0px rgba(0, 77, 128,1);
+    box-shadow: 0px 9px 0px rgba(0, 77, 128,1);
     margin: 20px auto;
   text-align: center;
   
@@ -97,9 +97,9 @@ button > img {
 }
 
 .push_button_comic.activated{
-    -webkit-box-shadow: 0px 1px 0px rgba(0, 77, 128,1), 0px 3px 6px rgba(0,0,0,.9);
-    -moz-box-shadow: 0px 1px 0px rgba(0, 77, 128,1), 0px 3px 6px rgba(0,0,0,.9);
-    box-shadow: 0px 1px 0px rgba(0, 77, 128,1), 0px 3px 6px rgba(0,0,0,.9);
+    -webkit-box-shadow: 0px 1px 0px rgba(0, 77, 128,1);
+    -moz-box-shadow: 0px 1px 0px rgba(0, 77, 128,1);
+    box-shadow: 0px 1px 0px rgba(0, 77, 128,1);
     position: relative;
     top: 8px;
 }
@@ -118,9 +118,9 @@ button > img {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow: 0px 9px 0px rgba(37, 142, 37,1), 0px 9px 25px rgba(0,0,0,.7);
-    -moz-box-shadow: 0px 9px 0px rgba(37, 142, 37,1), 0px 9px 25px rgba(0,0,0,.7);
-    box-shadow: 0px 9px 0px rgba(37, 142, 37,1), 0px 9px 25px rgba(0,0,0,.7);
+    -webkit-box-shadow: 0px 9px 0px rgba(37, 142, 37,1);
+    -moz-box-shadow: 0px 9px 0px rgba(37, 142, 37,1);
+    box-shadow: 0px 9px 0px rgba(37, 142, 37,1);
     margin: 20px auto;
   text-align: center;
   
@@ -132,9 +132,9 @@ button > img {
 }
 
 .push_button_banda.activated{
-    -webkit-box-shadow: 0px 1px 0px rgba(37, 142, 37,1), 0px 3px 6px rgba(0,0,0,.9);
-    -moz-box-shadow: 0px 1px 0px rgba(37, 142, 37,1), 0px 3px 6px rgba(0,0,0,.9);
-    box-shadow: 0px 1px 0px rgba(37, 142, 37,1), 0px 3px 6px rgba(0,0,0,.9);
+    -webkit-box-shadow: 0px 1px 0px rgba(37, 142, 37,1);
+    -moz-box-shadow: 0px 1px 0px rgba(37, 142, 37,1);
+    box-shadow: 0px 1px 0px rgba(37, 142, 37,1);
     position: relative;
     top: 8px;
 }
