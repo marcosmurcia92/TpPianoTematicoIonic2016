@@ -1,6 +1,5 @@
 /* Empty. Add your own CSS if you like */
-#fhm_page .scroll,
-.fhm_container {
+#fhm_page .scroll{
   position:absolute;
   top:0;
   right:0;
@@ -8,9 +7,17 @@
   bottom:0;
 }
 
+.fhm_container {
+  position:absolute;
+  top:105px;
+  right:0;
+  left:0;
+  bottom:0;
+}
+
 .fhm_row {
   /* position: absolute; */
-  height: 33.3%;
+  height: 30%;
   left:0;
   right:0;
   background-color:#FFFFFF;
@@ -22,6 +29,10 @@
   background-color: #FFFFFF;
   border: 1px solid #FFFFFF;
   float:left;
+}
+
+.fhm_control {
+  margin: 0 auto;
 }
 
 button > img {

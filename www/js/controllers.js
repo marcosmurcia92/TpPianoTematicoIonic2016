@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal,$cordovaNativeAudio,$ionicPlatform, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal,$cordovaNativeAudio,$ionicPlatform, $timeout, UsuarioSecuencia) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
 
   $ionicPlatform.ready(function(){
         //ANIMALES
+       // if($ionicPlatform.isAndroid){
       $cordovaNativeAudio
         .preloadSimple('cat', 'mp3/animales/cat.mp3')
         .then(function (msg) {
@@ -141,6 +142,7 @@ angular.module('starter.controllers', [])
         }, function (error) {
           alert(error);
         });
+      //}
   });
 
   // Form data for the login modal
@@ -168,7 +170,7 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
-
+    UsuarioSecuencia.login($scope.loginData.username);
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
@@ -181,14 +183,17 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PianoCtrl', function($scope, $stateParams,$timeout,$cordovaVibration,$cordovaNativeAudio,$cordovaDevice,$ionicSideMenuDelegate) {
+.controller('PianoCtrl', function($scope, $stateParams,$timeout,$ionicPlatform,$cordovaVibration,$cordovaNativeAudio,$cordovaDevice,$ionicSideMenuDelegate,UsuarioSecuencia,$interval,$cordovaFile) {
   $ionicSideMenuDelegate.canDragContent(false);
 
   $scope.TocarPiano=function(carpeta,sonido){
       console.log("/android_asset/www/mp3/"+carpeta+"/"+sonido+".mp3");
     //var src = "";
-      $cordovaVibration.vibrate(500);
-      $cordovaNativeAudio.play(sonido);
+      UsuarioSecuencia.setSequence(sonido);
+      //if($ionicPlatform.isAndroid){
+        $cordovaVibration.vibrate(500);
+        $cordovaNativeAudio.play(sonido);
+      //}
       // src = "/android_asset/www/mp3/"+carpeta+"/"+sonido+".mp3";
       // var media = $cordovaMedia.newMedia(src);
       // media.setVolume(1);
@@ -197,5 +202,37 @@ angular.module('starter.controllers', [])
       // $timeout(function(){
       //   media.release();
       // },1000);
+  };
+
+  $scope.BorrarSecuencia=function(idx){
+      UsuarioSecuencia.removeSequence(idx);
+  };
+
+  $scope.Reproducir=function(){
+
+  };
+
+  $scope.Grabar=function(){
+      console.log(UsuarioSecuencia.getSecuenciaString());
+      //if($ionicPlatform.isAndroid){
+          $cordovaFile.checkDir(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName())
+          .then(function (success) {
+            console.info("SUCCESS CHECK",success);
+          }, function (error) {
+            console.info("ERROR CHECK",error);
+            $cordovaFile.createDir(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName(), false)
+            .then(function (success) {
+              console.info("SUCCESS CREATE",success);
+              $cordovaFile.writeFile(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/file.txt", UsuarioSecuencia.getSecuenciaString(), true)
+              .then(function (success) {
+                console.info("SUCCESS WRITE",success);
+              }, function (error) {
+                console.info("ERROR WRITE",error);
+              });
+            }, function (error) {
+              console.info("ERROR CREATE",error);
+            });
+          });
+      //}
   };
 });
