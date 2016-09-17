@@ -1,38 +1,71 @@
 <ion-view view-title="Banda">
   <ion-content id="fhm_page">
+  <div align="center" class="fhm_control">
+      <div align="center" class="button-bar bar-dark">
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="BorrarSecuencia(0)" class="button button-assertive rounded button-stable">
+          <p ng-if="UsuarioSecuencia.getSecuencia().length < 1">1</p>
+          <img ng-if="UsuarioSecuencia.getSecuencia().length >= 1" src="img/{{UsuarioSecuencia.getSecuencia()[0]}}.png">
+        </button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="BorrarSecuencia(1)" class="button button-assertive rounded button-stable">
+          <p ng-if="UsuarioSecuencia.getSecuencia().length < 2">2</p>
+          <img ng-if="UsuarioSecuencia.getSecuencia().length >= 2" src="img/{{UsuarioSecuencia.getSecuencia()[1]}}.png">
+        </button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="BorrarSecuencia(2)" class="button button-assertive rounded button-stable">
+          <p ng-if="UsuarioSecuencia.getSecuencia().length < 3">3</p>
+          <img ng-if="UsuarioSecuencia.getSecuencia().length >= 3" src="img/{{UsuarioSecuencia.getSecuencia()[2]}}.png">
+        </button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="BorrarSecuencia(3)" class="button button-assertive rounded button-stable">
+          <p ng-if="UsuarioSecuencia.getSecuencia().length < 4">4</p>
+          <img ng-if="UsuarioSecuencia.getSecuencia().length >= 4" src="img/{{UsuarioSecuencia.getSecuencia()[3]}}.png">
+        </button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="BorrarSecuencia(4)" class="button button-assertive rounded button-stable">
+          <p ng-if="UsuarioSecuencia.getSecuencia().length < 5">5</p>
+          <img ng-if="UsuarioSecuencia.getSecuencia().length >= 5" src="img/{{UsuarioSecuencia.getSecuencia()[4]}}.png">
+        </button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="BorrarSecuencia(5)" class="button button-assertive rounded button-stable">
+          <p ng-if="UsuarioSecuencia.getSecuencia().length < 6">6</p>
+          <img ng-if="UsuarioSecuencia.getSecuencia().length >= 6" src="img/{{UsuarioSecuencia.getSecuencia()[5]}}.png">
+        </button>
+      </div>
+      <div class="button-bar bar-dark">
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="Reproducir(false)" class="button button-balanced button-stable icon ion-play"></button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="Reproducir(true)" class="button button-positive button-stable icon ion-android-archive"></button>
+        <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="Grabar()" class="button button-record icon ion-record"></button>
+      </div>
+    </div>
       <div class="fhm_container">
         <div class="fhm_row">
           <div class="fhm_item">
-            <button ng-click="TocarPiano('banda','drum')" class="push_button_banda">
+            <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="TocarPiano('banda','drum')" class="push_button_banda">
 				      <img src="img/drum.png">
 			     </button>
           </div>
           <div class="fhm_item">
-            <button ng-click="TocarPiano('banda','flute')" class="push_button_banda">
+            <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="TocarPiano('banda','flute')" class="push_button_banda">
               <img src="img/flute.png">
 			</button>
           </div>
         </div>
         <div class="fhm_row">
           <div class="fhm_item">
-            <button ng-click="TocarPiano('banda','guitar')" class="push_button_banda">
+            <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="TocarPiano('banda','guitar')" class="push_button_banda">
               <img src="img/guitar.png">
 			</button>
           </div>
           <div class="fhm_item">
-            <button ng-click="TocarPiano('banda','trumpet')"class="push_button_banda">
+            <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="TocarPiano('banda','trumpet')"class="push_button_banda">
               <img src="img/trumpet.png">
 			</button>
           </div>
         </div>
         <div class="fhm_row">
           <div class="fhm_item">
-            <button ng-click="TocarPiano('banda','violin')"class="push_button_banda">
+            <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="TocarPiano('banda','violin')"class="push_button_banda">
               <img src="img/violin.png">
 			</button>
           </div>
           <div class="fhm_item">
-            <button ng-click="TocarPiano('banda','xylo')"class="push_button_banda">
+            <button ng-disabled="UsuarioSecuencia.isPlaying()" ng-click="TocarPiano('banda','xylo')"class="push_button_banda">
               <img src="img/xylo.png">
 			     </button>
           </div>

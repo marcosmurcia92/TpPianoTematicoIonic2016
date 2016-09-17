@@ -145,6 +145,30 @@ angular.module('starter.controllers', [])
       //}
   });
 
+$scope.UsuarioSecuencia = UsuarioSecuencia;
+
+$ionicPlatform.registerBackButtonAction(function (event) {
+    $cordovaNativeAudio.unload('cat');
+    $cordovaNativeAudio.unload('dog');
+    $cordovaNativeAudio.unload('duck');
+    $cordovaNativeAudio.unload('horse');
+    $cordovaNativeAudio.unload('sheep');
+    $cordovaNativeAudio.unload('turkey');
+    $cordovaNativeAudio.unload('drum');
+    $cordovaNativeAudio.unload('flute');
+    $cordovaNativeAudio.unload('guitar');
+    $cordovaNativeAudio.unload('trumpet');
+    $cordovaNativeAudio.unload('violin');
+    $cordovaNativeAudio.unload('xylo');
+    $cordovaNativeAudio.unload('appear');
+    $cordovaNativeAudio.unload('arrow');
+    $cordovaNativeAudio.unload('cuckoo');
+    $cordovaNativeAudio.unload('flee');
+    $cordovaNativeAudio.unload('jump');
+    $cordovaNativeAudio.unload('slip');
+    navigator.app.exitApp(); //<-- remove this line to disable the exit
+  }, 100);
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -186,6 +210,8 @@ angular.module('starter.controllers', [])
 .controller('PianoCtrl', function($scope, $stateParams,$timeout,$ionicPlatform,$cordovaVibration,$cordovaNativeAudio,$cordovaDevice,$ionicSideMenuDelegate,UsuarioSecuencia,$interval,$cordovaFile) {
   $ionicSideMenuDelegate.canDragContent(false);
 
+  $scope.UsuarioSecuencia = UsuarioSecuencia;
+
   $scope.TocarPiano=function(carpeta,sonido){
       console.log("/android_asset/www/mp3/"+carpeta+"/"+sonido+".mp3");
     //var src = "";
@@ -208,8 +234,41 @@ angular.module('starter.controllers', [])
       UsuarioSecuencia.removeSequence(idx);
   };
 
-  $scope.Reproducir=function(){
+  $scope.Reproducir=function(cargar){
+      var idx = 0;
+      UsuarioSecuencia.setPlaying(true);
+      if(cargar){
+        $cordovaFile.checkDir(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName())
+          .then(function (success) {
+            console.info("SUCCESS CHECK DIR",success);
+            $cordovaFile.checkFile(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt")
+              .then(function (success) {
+                console.info("SUCCESS CHECK FILE",success);
+                $cordovaFile.readAsText(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt")
+                  .then(function (success) {
+                      console.info("SUCCESS READ FILE",success);
+                      var splitArray = success.split("-");
+                      for (var i = 0; i < splitArray.length; i++) {
+                        UsuarioSecuencia.setSequence(splitArray[i]);
+                      };
+                  }, function (error) {
+                      console.info("ERROR READ FILE",error);
+                  });
+              }, function (error) {
+                console.info("ERROR CHECK FILE",error);
+              });
+          }, function (error) {
+            console.info("ERROR CHECK DIR",error);
+          });
+      }
 
+      $interval(function(){
+        $cordovaNativeAudio.play(UsuarioSecuencia.getSecuencia()[idx]);
+        idx++;
+        if(idx == 6){
+          UsuarioSecuencia.setPlaying(false);
+        }
+      },1000,6);
   };
 
   $scope.Grabar=function(){
@@ -217,21 +276,43 @@ angular.module('starter.controllers', [])
       //if($ionicPlatform.isAndroid){
           $cordovaFile.checkDir(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName())
           .then(function (success) {
+
             console.info("SUCCESS CHECK",success);
+            $cordovaFile.writeFile(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt", UsuarioSecuencia.getSecuenciaString(), true)
+              .then(function (success) {
+
+                console.info("SUCCESS WRITE",success);
+
+              }, function (error) {
+
+                console.info("ERROR WRITE",error);
+
+              });
+
           }, function (error) {
+
             console.info("ERROR CHECK",error);
             $cordovaFile.createDir(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName(), false)
             .then(function (success) {
+
               console.info("SUCCESS CREATE",success);
-              $cordovaFile.writeFile(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/file.txt", UsuarioSecuencia.getSecuenciaString(), true)
+              $cordovaFile.writeFile(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt", UsuarioSecuencia.getSecuenciaString(), true)
               .then(function (success) {
+
                 console.info("SUCCESS WRITE",success);
+
               }, function (error) {
+
                 console.info("ERROR WRITE",error);
+
               });
+
             }, function (error) {
+
               console.info("ERROR CREATE",error);
+
             });
+
           });
       //}
   };

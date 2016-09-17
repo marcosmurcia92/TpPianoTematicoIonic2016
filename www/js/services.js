@@ -7,6 +7,7 @@ angular.module('starter.services', [])
 .factory('UsuarioSecuencia', [function(){
 	var userName = '';
 	var secuencia = [];
+	var playing = false;
 
 	return{
 		login:function(user){
@@ -29,6 +30,12 @@ angular.module('starter.services', [])
 			if(index < secuencia.length){
 				secuencia.splice(index,1);
 			}
+		},
+		setPlaying:function(val){
+			playing = val;
+		},
+		isPlaying:function(){
+			return playing;
 		},
 		getName:function(){
 			return userName;

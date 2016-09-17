@@ -72,6 +72,13 @@ button > img {
   transition: all .1s ease;*/
 }
 
+.push_button_animal[disabled]{
+  background-color: rgba(213,170,144,1);
+    -webkit-box-shadow: 0px 9px 0px rgba(213,152,144,1);
+    -moz-box-shadow: 0px 9px 0px rgba(213,152,144,1);
+    box-shadow: 0px 9px 0px rgba(213,152,144,1);
+}
+
 .push_button_animal.activated{
     -webkit-box-shadow: 0px 1px 0px rgba(219,31,5,1);
     -moz-box-shadow: 0px 1px 0px rgba(219,31,5,1);
@@ -107,6 +114,13 @@ button > img {
   transition: all .1s ease;*/
 }
 
+.push_button_comic[disabled]{
+  background-color: rgba(144, 185, 213,1);
+    -webkit-box-shadow: 0px 9px 0px rgba(63, 125, 166,1);
+    -moz-box-shadow: 0px 9px 0px rgba(63, 125, 166,1);
+    box-shadow: 0px 9px 0px rgba(63, 125, 166,1);
+}
+
 .push_button_comic.activated{
     -webkit-box-shadow: 0px 1px 0px rgba(0, 77, 128,1);
     -moz-box-shadow: 0px 1px 0px rgba(0, 77, 128,1);
@@ -140,6 +154,13 @@ button > img {
   -ms-transition: all .1s ease;
   -o-transition: all .1s ease;
   transition: all .1s ease;*/
+}
+
+.push_button_banda[disabled]{
+  background-color: rgba(144, 213, 144,1);
+    -webkit-box-shadow: 0px 9px 0px rgba(89, 192, 89,1);
+    -moz-box-shadow: 0px 9px 0px rgba(89, 192, 89,1);
+    box-shadow: 0px 9px 0px rgba(89, 192, 89,1);
 }
 
 .push_button_banda.activated{
