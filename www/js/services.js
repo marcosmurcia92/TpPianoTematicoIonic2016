@@ -45,13 +45,16 @@ angular.module('starter.services', [])
 		},
 		getSecuenciaString:function(){
 			var resString = "";
+			var resObj = {};
+			resObj.userName = userName;
 			for (var i = 0; i < secuencia.length; i++) {
 				resString = resString + secuencia[i];
 				if((i+1) < secuencia.length){
 					resString = resString + "-";
 				}
 			};
-			return resString;
+			resObj.secuencia = resString;
+			return JSON.stringify(resObj);
 		}
 	};
 }])

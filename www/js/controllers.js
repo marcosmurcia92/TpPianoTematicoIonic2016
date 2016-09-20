@@ -316,7 +316,7 @@ $ionicPlatform.registerBackButtonAction(function (event) {
   };
 })
 
-.controller('PianoCtrl', function($scope, $stateParams,$timeout,$ionicPlatform,$cordovaVibration,$cordovaNativeAudio,$cordovaDevice,$ionicSideMenuDelegate,UsuarioSecuencia,$interval,$cordovaFile) {
+.controller('PianoCtrl', function($scope, $stateParams,$timeout,$ionicPlatform,$cordovaVibration,$cordovaNativeAudio,$cordovaDevice,$ionicSideMenuDelegate,UsuarioSecuencia,$interval,$ionicPopup,$cordovaFile) {
   $ionicSideMenuDelegate.canDragContent(false);
 
   $scope.UsuarioSecuencia = UsuarioSecuencia;
@@ -356,7 +356,8 @@ $ionicPlatform.registerBackButtonAction(function (event) {
                 $cordovaFile.readAsText(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt")
                   .then(function (success) {
                       console.info("SUCCESS READ FILE",success);
-                      var splitArray = success.split("-");
+                      var usuarioJson = JSON.parse(success);
+                      var splitArray = usuarioJson.secuencia.split("-");
                       for (var i = 0; i < splitArray.length; i++) {
                         UsuarioSecuencia.setSequence(splitArray[i]);
                       };
@@ -391,7 +392,20 @@ $ionicPlatform.registerBackButtonAction(function (event) {
               .then(function (success) {
 
                 console.info("SUCCESS WRITE",success);
-
+                $cordovaFile.readAsText(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt")
+                  .then(function (success) {
+                      console.info("SUCCESS READ FILE",success);
+                     var alertPopup = $ionicPopup.alert({
+                       title: 'Objeto JSON Guardado!',
+                       template: success
+                     });
+                  }, function (error) {
+                      console.info("ERROR READ FILE",error);
+                      var alertPopup = $ionicPopup.alert({
+                       title: 'Error al Guardar JSON',
+                       template: error
+                     });
+                  });
               }, function (error) {
 
                 console.info("ERROR WRITE",error);
@@ -409,7 +423,20 @@ $ionicPlatform.registerBackButtonAction(function (event) {
               .then(function (success) {
 
                 console.info("SUCCESS WRITE",success);
-
+                $cordovaFile.readAsText(cordova.file.externalApplicationStorageDirectory, "files/"+UsuarioSecuencia.getName()+"/Secuencia.txt")
+                  .then(function (success) {
+                      console.info("SUCCESS READ FILE",success);
+                     var alertPopup = $ionicPopup.alert({
+                       title: 'Objeto JSON Guardado!',
+                       template: success
+                     });
+                  }, function (error) {
+                      console.info("ERROR READ FILE",error);
+                      var alertPopup = $ionicPopup.alert({
+                       title: 'Error de JSON',
+                       template: error
+                     });
+                  });
               }, function (error) {
 
                 console.info("ERROR WRITE",error);
