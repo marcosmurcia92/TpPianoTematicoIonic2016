@@ -1,23 +1,59 @@
-<ion-modal-view>
+<ion-modal-view style="width: 70%; height: 70%; top: 15%; left: 15%; right: 15%; bottom: 15%;">
   <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
+    <h1 ng-show="modalState=='Login'" class="title">Login</h1>
+    <h1 ng-show="modalState=='Register'" class="title">Register</h1>
+    <!-- <div class="buttons">
       <button class="button button-clear" ng-click="closeLogin()">Cerrar</button>
-    </div>
+    </div> -->
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
+    <form ng-show="modalState=='Login'">
+      <div name="LogInDiv" ng-show="!isLogged" class="list">
         <label class="item item-input">
           <span class="input-label">Usuario</span>
-          <input type="text" ng-model="loginData.username">
+          <input type="email" ng-model="loginData.username" required>
         </label>
-        <!-- <label class="item item-input">
-          <span class="input-label">Password</span>
+        <label class="item item-input">
+          <span class="input-label">Contraseña</span>
           <input type="password" ng-model="loginData.password">
-        </label> -->
+        </label>
         <label class="item">
-          <button ng-disabled="!loginData.username" class="button button-block button-positive" type="submit">Log in</button>
+          <button ng-disabled="!loginData.username || !loginData.password" class="button button-block button-positive" ng-click="doLogin()">Log in</button>
+        </label>
+        <label class="item">
+          <button class="button button-block button-dark" ng-disabled="!loginData.username" ng-click="resetPassword()">Olvide mi Password</button>
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" ng-click="goToRegister()">Registrarse</button>
+        </label>
+      </div>
+
+      <div name="LogOutDiv" ng-show="isLogged" class="list">
+        <label class="item">
+          <button ng-disabled="!loginData.username" class="button button-block button-assertive" ng-click="doLogout()">Log Out</button>
+        </label>
+      </div>
+    </form>
+
+    <form ng-show="modalState=='Register'">
+      <div name="RegisterDiv" class="list">
+        <label class="item item-input">
+          <span class="input-label">Nuevo Usuario</span>
+          <input type="email" ng-model="registerData.username" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Nueva Contraseña</span>
+          <input type="password" ng-model="registerData.password" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Confirme Contraseña</span>
+          <input type="password" ng-model="registerData.passwordC" required>
+        </label>
+        <label class="item">
+          <button ng-disabled="!registerData.username || !registerData.password || !registerData.passwordC || (registerData.password != registerData.passwordC)" class="button button-block button-positive" ng-click="doRegister()">Register</button>
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" ng-click="goToLogin()">Volver al Login</button>
         </label>
       </div>
     </form>

@@ -5343,7 +5343,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
   width: 100%;
   background-color: #fff; }
 
-@media (min-width: 680px) {
+@media (min-width: 100px) {
   .modal {
     top: 20%;
     right: 20%;
